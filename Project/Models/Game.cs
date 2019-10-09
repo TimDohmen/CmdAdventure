@@ -13,8 +13,8 @@ namespace ConsoleAdventure.Project.Models
       Room start = new Room("First Room", "Dim lit room not a lot going on here");
       Room two = new Room("Second Room", "Bright Room too bright to see");
 
-      start.AddRoomConnection(two);
-      two.AddRoomConnection(start);
+      start.AddRoomConnection(two, "west");
+      two.AddRoomConnection(start, "east");
 
       Item sword = new Item("Rusty Sword", "Big long sword");
       start.Items.Add(sword);

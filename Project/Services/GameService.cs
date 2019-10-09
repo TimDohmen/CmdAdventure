@@ -13,7 +13,16 @@ namespace ConsoleAdventure.Project
 
     public void Go(string direction)
     {
-      throw new System.NotImplementedException();
+      string from = _game.CurrentRoom.Name;
+      _game.CurrentRoom = _game.CurrentRoom.Move(direction);
+      string to = _game.CurrentRoom.Name;
+
+      if (from == to)
+      {
+        Messages.Add("Invalid Room");
+        return;
+      }
+      Messages.Add($"Traveled to {to} from {from}");
     }
     public void Help()
     {
