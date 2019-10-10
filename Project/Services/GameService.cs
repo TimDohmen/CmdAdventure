@@ -88,7 +88,6 @@ Type use (item) to use item
     ///</summary>
     public void UseItem(string itemName)
     {
-      throw new System.NotImplementedException();
     }
 
     public GameService()

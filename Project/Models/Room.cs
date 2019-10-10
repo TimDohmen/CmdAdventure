@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CmdAdventure.Project.Models;
 using ConsoleAdventure.Project.Interfaces;
 
 namespace ConsoleAdventure.Project.Models
@@ -20,6 +21,10 @@ namespace ConsoleAdventure.Project.Models
 
     public Room Move(string direction)
     {
+      // if(Exits is TrapRoom)
+      // {
+
+      // }
       if (Exits.ContainsKey(direction))
       {
         return Exits[direction];

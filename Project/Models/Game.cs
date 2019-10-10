@@ -1,3 +1,4 @@
+using CmdAdventure.Project.Models;
 using ConsoleAdventure.Project.Interfaces;
 
 namespace ConsoleAdventure.Project.Models
@@ -10,9 +11,9 @@ namespace ConsoleAdventure.Project.Models
     //NOTE Make yo rooms here...
     public void Setup()
     {
-      Room start = new Room("Unkown ", "You come to your senses in a pile of your own vomit.");
+      Room start = new Room("An Unknown Room", "You come to your senses in a pile of your own vomit.");
       Room two = new Room("Outside", "To your north you hear a noise but to your west you see something mysterious");
-      Room three = new Room("Westeros Bar", "The bar is very crowded but there is an open spot off to the side");
+      Room three = new TrapRoom("Westeros Bar", "The bar is very crowded but there is an open spot off to the side");
       Room four = new Room("Hidden Tunnel", "There is ancient markings on the walls and lit torchs leading down a corridor.");
       Room five = new Room("Courtyard", "You see large arch doors to your south but a smaller normal door to your east.");
       Room six = new Room("Jailer", "You walk into the room to see a group of guards sitting around a table looking up at you.");
@@ -45,9 +46,9 @@ Do you dare go north?");
 
 
       Item sword = new Item("Sword", "Big long sword");
-      Item drink = new Item("Tankard O' Ale", "Biggest container of beer you've ever seen.");
+      Item drink = new Item("Ale", "Biggest container of beer you've ever seen.");
       Item torch = new Item("Torch", "Used to light even the darkest of places.");
-      Item crown = new Item("Golden Crown", "Fit for a king");
+      Item crown = new Item("Crown", "Fit for a king");
 
       start.Items.Add(sword);
       three.Items.Add(drink);

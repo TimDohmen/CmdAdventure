@@ -13,6 +13,7 @@ namespace ConsoleAdventure.Project.Controllers
     //NOTE Makes sure everything is called to finish Setup and Starts the Game loop
     public void Run()
     {
+      Console.Clear();
       System.Console.WriteLine("whats your name");
       string player = Console.ReadLine();
       _gameService.Setup(player);
