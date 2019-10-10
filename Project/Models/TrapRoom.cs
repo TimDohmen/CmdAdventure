@@ -12,13 +12,13 @@ namespace CmdAdventure.Project.Models
     public string Description { get; set; }
     public List<Item> Items { get; set; }
     public Dictionary<string, IRoom> Exits { get; set; }
-    public Dictionary<IRoom, Item> Unlockable { get; set; }
+    public List<Item> Unlockable { get; set; }
 
     public bool Locked { get; set; } = true;
 
     public void UseItem(Item itemName)
     {
-      if (Unlockable.ContainsValue(itemName))
+      if (Unlockable.Contains(itemName))
       {
         Locked = false;
         System.Console.WriteLine("Unlocked door");
@@ -27,7 +27,6 @@ namespace CmdAdventure.Project.Models
       {
         System.Console.WriteLine("Item has no use here");
       }
-
 
     }
     public string GetTemplate()
@@ -75,9 +74,9 @@ You are now in {Name}
     {
       Exits.Add(direction, room);
     }
-    public void addUnlockable(Item item, TrapRoom room)
+    public void addUnlockable(Item item)
     {
-      Unlockable.Add(room, item);
+      Unlockable.Add(item);
     }
     public TrapRoom(string name, string description)
     {
@@ -85,7 +84,7 @@ You are now in {Name}
       Description = description;
       Items = new List<Item>();
       Exits = new Dictionary<string, IRoom>();
-      Unlockable = new Dictionary<IRoom, Item>();
+      Unlockable = new List<Item>();
     }
 
   }

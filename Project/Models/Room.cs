@@ -22,6 +22,11 @@ namespace ConsoleAdventure.Project.Models
       Exits.Add(direction, room);
     }
 
+    public void UseItem(Item itemName)
+    {
+
+    }
+
     public IRoom Move(string direction)
     {
       IRoom room = this;

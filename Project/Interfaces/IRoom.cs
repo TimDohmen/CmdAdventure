@@ -14,5 +14,8 @@ namespace ConsoleAdventure.Project.Interfaces
     IRoom Move(string x);
     public void AddRoomConnection(IRoom room, string direction);
 
+    public void UseItem(Item itemName);
+
+
   }
 }
