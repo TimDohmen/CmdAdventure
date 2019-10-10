@@ -16,7 +16,7 @@ namespace ConsoleAdventure.Project.Models
       IRoom three = new TrapRoom("Westeros Bar", "The bar is very crowded but there is an open spot off to the side");
       IRoom four = new Room("Hidden Tunnel", "There is ancient markings on the walls and lit torchs leading down a corridor.");
       IRoom five = new Room("Courtyard", "You see large arch doors to your south but a smaller normal door to your east.");
-      IRoom six = new TrapRoom("Jailer", "You walk into the room to see a group of guards sitting around a table looking up at you.");
+      IRoom six = new TrapRoom("Jailor", "You walk into the room to see a group of guards sitting around a table looking up at you.");
       IRoom seven = new Room("Dark Hallway", $@"
 You enter the arch doors to a long dark hallway. 
 Do you dare go north?");
@@ -43,6 +43,9 @@ Do you dare go north?");
       seven.AddRoomConnection(eight, "north");
       eight.AddRoomConnection(seven, "south");
 
+      eight.AddRoomConnection(start, "secret");
+
+
 
 
       Item sword = new Item("Sword", "Big long sword");
@@ -54,11 +57,13 @@ Do you dare go north?");
       three.Items.Add(drink);
       four.Items.Add(torch);
       nine.Items.Add(crown);
+      // six.Items.Add(crown);
+
 
 
       (three as TrapRoom).addUnlockable(drink);
       (eight as ThroneRoom).addUnlockable(crown);
-      (six as ThroneRoom).addUnlockable(sword);
+      (six as TrapRoom).addUnlockable(sword);
 
 
       CurrentRoom = start;

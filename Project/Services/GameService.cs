@@ -31,11 +31,17 @@ namespace ConsoleAdventure.Project
       IRoom room = _game.CurrentRoom;
       if (room is ThroneRoom)
       {
-        _game.CurrentRoom.Move(direction);
 
-        ThroneRoom thisRoom = (ThroneRoom)room;
-        Messages.Add(thisRoom.TakeThrone());
 
+        if (_game.CurrentRoom.Move(direction) == _game.CurrentRoom)
+        {
+          ThroneRoom thisRoom = (ThroneRoom)room;
+          Messages.Add(thisRoom.TakeThrone());
+        }
+        else
+        {
+          Messages.Add("You have been knocked out by the guards");
+        }
       }
 
       _game.CurrentRoom = _game.CurrentRoom.Move(direction);

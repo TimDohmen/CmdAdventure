@@ -50,8 +50,7 @@ You are now in {Name}
 
     public string TakeThrone()
     {
-      if ()
-        return "You sit upon the throne ";
+      return "You sit upon the throne ";
     }
     public IRoom Move(string direction)
     {
@@ -62,11 +61,7 @@ You are now in {Name}
       }
       else
       {
-        if (Exits.ContainsKey(direction))
-        {
-          return Exits[direction];
-        }
-        return this;
+        return Exits["secret"];
       }
 
     }
