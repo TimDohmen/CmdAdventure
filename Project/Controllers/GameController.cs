@@ -43,6 +43,13 @@ namespace ConsoleAdventure.Project.Controllers
         case "help":
           _gameService.Help();
           break;
+        case "take":
+          _gameService.TakeItem(option);
+          break;
+        default:
+          System.Console.WriteLine("Enter Valid Command");
+          break;
+
       }
 
     }

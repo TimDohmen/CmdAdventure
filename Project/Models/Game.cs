@@ -44,7 +44,7 @@ Do you dare go north?");
 
 
 
-      Item sword = new Item("Rusty Sword", "Big long sword");
+      Item sword = new Item("Sword", "Big long sword");
       Item drink = new Item("Tankard O' Ale", "Biggest container of beer you've ever seen.");
       Item torch = new Item("Torch", "Used to light even the darkest of places.");
       Item crown = new Item("Golden Crown", "Fit for a king");
@@ -57,7 +57,7 @@ Do you dare go north?");
     }
     public Game()
     {
-      CurrentPlayer = new Player();
+      CurrentPlayer = new Player("Timbo");
       Setup();
     }
   }
