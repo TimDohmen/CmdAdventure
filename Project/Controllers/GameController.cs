@@ -69,7 +69,6 @@ namespace ConsoleAdventure.Project.Controllers
           }
           else
           {
-            _gameService.Go(command);
             System.Console.WriteLine("As you are approaching you hear footsteps coming up behind you, do you continue to the Throne?");
             string final = Console.ReadLine();
             switch (final)
