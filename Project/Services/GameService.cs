@@ -26,7 +26,15 @@ namespace ConsoleAdventure.Project
     }
     public void Help()
     {
-      throw new System.NotImplementedException();
+      Messages.Add($@"
+Type look to see where you are and what option you have
+
+Type go (direction) to travel
+
+Type take (item) to take item from a room
+
+Type use (item) to use item
+");
     }
 
     public void Inventory()
