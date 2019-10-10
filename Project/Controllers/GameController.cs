@@ -30,8 +30,10 @@ namespace ConsoleAdventure.Project.Controllers
       string option = input.Substring(input.IndexOf(" ") + 1).Trim();
       //NOTE this will take the user input and parse it into a command and option.
       //IE: take silver key => command = "take" option = "silver key"
+      Console.Clear();
       switch (command)
       {
+
         case "look":
           _gameService.Look();
           break;
