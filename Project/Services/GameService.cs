@@ -39,7 +39,13 @@ Type use (item) to use item
 
     public void Inventory()
     {
-      throw new System.NotImplementedException();
+      Messages.Add("Your Inventory : ");
+      foreach (Item i in _game.CurrentPlayer.Inventory)
+      {
+        Messages.Add($"{i.Name}  -   {i.Description}");
+
+      }
+      return;
     }
 
     public void Look()
@@ -70,6 +76,7 @@ Type use (item) to use item
         Messages.Add("No Items Available");
         return;
       }
+
       _game.CurrentPlayer.Inventory.AddRange(_game.CurrentRoom.Items);
       _game.CurrentRoom.Items.Clear();
     }

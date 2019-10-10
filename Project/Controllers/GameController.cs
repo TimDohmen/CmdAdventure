@@ -35,6 +35,7 @@ namespace ConsoleAdventure.Project.Controllers
       {
 
         case "look":
+          Console.Clear()
           _gameService.Look();
           break;
         case "go":
@@ -45,6 +46,9 @@ namespace ConsoleAdventure.Project.Controllers
           break;
         case "take":
           _gameService.TakeItem(option);
+          break;
+        case "inventory":
+          _gameService.Inventory();
           break;
         default:
           System.Console.WriteLine("Enter Valid Command");

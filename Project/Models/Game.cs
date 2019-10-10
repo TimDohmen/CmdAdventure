@@ -5,7 +5,7 @@ namespace ConsoleAdventure.Project.Models
   public class Game : IGame
   {
     public Room CurrentRoom { get; set; }
-    public IPlayer CurrentPlayer { get; set; }
+    public Player CurrentPlayer { get; set; }
 
     //NOTE Make yo rooms here...
     public void Setup()
