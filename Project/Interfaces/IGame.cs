@@ -4,7 +4,7 @@ namespace ConsoleAdventure.Project.Interfaces
 {
   public interface IGame
   {
-    Room CurrentRoom { get; set; }
+    IRoom CurrentRoom { get; set; }
     Player CurrentPlayer { get; set; }
 
     void Setup();

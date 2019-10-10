@@ -5,22 +5,22 @@ namespace ConsoleAdventure.Project.Models
 {
   public class Game : IGame
   {
-    public Room CurrentRoom { get; set; }
+    public IRoom CurrentRoom { get; set; }
     public Player CurrentPlayer { get; set; }
 
     //NOTE Make yo rooms here...
     public void Setup()
     {
-      Room start = new Room("An Unknown Room", "You come to your senses in a pile of your own vomit.");
-      Room two = new Room("Outside", "To your north you hear a noise but to your west you see something mysterious");
-      Room three = new TrapRoom("Westeros Bar", "The bar is very crowded but there is an open spot off to the side");
-      Room four = new Room("Hidden Tunnel", "There is ancient markings on the walls and lit torchs leading down a corridor.");
-      Room five = new Room("Courtyard", "You see large arch doors to your south but a smaller normal door to your east.");
-      Room six = new Room("Jailer", "You walk into the room to see a group of guards sitting around a table looking up at you.");
-      Room seven = new Room("Dark Hallway", $@"
+      IRoom start = new Room("An Unknown Room", "You come to your senses in a pile of your own vomit.");
+      IRoom two = new Room("Outside", "To your north you hear a noise but to your west you see something mysterious");
+      IRoom three = new TrapRoom("Westeros Bar", "The bar is very crowded but there is an open spot off to the side");
+      IRoom four = new Room("Hidden Tunnel", "There is ancient markings on the walls and lit torchs leading down a corridor.");
+      IRoom five = new Room("Courtyard", "You see large arch doors to your south but a smaller normal door to your east.");
+      IRoom six = new Room("Jailer", "You walk into the room to see a group of guards sitting around a table looking up at you.");
+      IRoom seven = new Room("Dark Hallway", $@"
 You enter the arch doors to a long dark hallway. 
 Do you dare go north?");
-      Room eight = new Room("Throne Room", "There is the Iron Throne is with nobody to claim it... Do you dare sit in the throne?");
+      IRoom eight = new Room("Throne Room", "There is the Iron Throne is with nobody to claim it... Do you dare sit in the throne?");
 
       start.AddRoomConnection(two, "west");
       two.AddRoomConnection(start, "east");

@@ -12,24 +12,28 @@ namespace ConsoleAdventure.Project.Models
     public string Description { get; set; }
     public List<Item> Items { get; set; }
 
-    public Dictionary<string, Room> Exits { get; set; }
+    public Dictionary<string, IRoom> Exits { get; set; }
 
-    public void AddRoomConnection(Room room, string direction)
+    public void AddRoomConnection(IRoom room, string direction)
     {
       Exits.Add(direction, room);
     }
 
-    public Room Move(string direction)
+    public IRoom Move(string direction)
     {
-      // if(Exits is TrapRoom)
-      // {
-
-      // }
+      IRoom room = this;
+      if (room is TrapRoom)
+      {
+        TrapRoom trap = (TrapRoom)room;
+        trap.Locked();
+        System.Console.WriteLine("We hit the lock");
+      }
       if (Exits.ContainsKey(direction))
       {
         return Exits[direction];
       }
       return this;
+
     }
 
     public string GetTemplate()
@@ -58,7 +62,7 @@ You are now in {Name}
       Name = name;
       Description = description;
       Items = new List<Item>();
-      Exits = new Dictionary<string, Room>();
+      Exits = new Dictionary<string, IRoom>();
     }
   }
 
