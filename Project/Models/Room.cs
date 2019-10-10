@@ -7,7 +7,10 @@ namespace ConsoleAdventure.Project.Models
   public class Room : IRoom
   {
 
-
+    public bool Locked()
+    {
+      return false;
+    }
     public string Name { get; set; }
     public string Description { get; set; }
     public List<Item> Items { get; set; }
@@ -25,7 +28,6 @@ namespace ConsoleAdventure.Project.Models
       if (room is TrapRoom)
       {
         TrapRoom trap = (TrapRoom)room;
-        trap.Locked();
         System.Console.WriteLine("We hit the lock");
       }
       if (Exits.ContainsKey(direction))

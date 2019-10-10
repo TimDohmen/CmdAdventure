@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CmdAdventure.Project.Models;
 using ConsoleAdventure.Project.Interfaces;
 using ConsoleAdventure.Project.Models;
 
@@ -77,9 +78,19 @@ Type use (item) to use item
         Messages.Add("No Items Available");
         return;
       }
+      for (int i = 0; i < _game.CurrentRoom.Items.Count; i++)
+      {
+        var item = _game.CurrentRoom.Items[i];
+        if (itemName != item.Name.ToLower())
+        {
+          Messages.Add("Invalid Item");
+          return;
+        }
+        _game.CurrentPlayer.Inventory.Add(item);
+        _game.CurrentRoom.Items.Remove(item);
+      }
 
-      _game.CurrentPlayer.Inventory.AddRange(_game.CurrentRoom.Items);
-      _game.CurrentRoom.Items.Clear();
+
     }
     ///<summary>
     ///No need to Pass a room since Items can only be used in the CurrentRoom
@@ -88,6 +99,25 @@ Type use (item) to use item
     ///</summary>
     public void UseItem(string itemName)
     {
+      IRoom room = _game.CurrentRoom;
+      if (room is TrapRoom)
+      {
+        for (int i = 0; i < _game.CurrentPlayer.Inventory.Count; i++)
+        {
+          var item = _game.CurrentPlayer.Inventory[i];
+          if (itemName != item.Name.ToLower())
+          {
+            Messages.Add("Invalid Item");
+          }
+          else
+          {
+            TrapRoom trap = (TrapRoom)room;
+            trap.UseItem(item);
+            System.Console.WriteLine("using item in trapservice");
+          }
+        }
+
+      }
     }
 
     public GameService()

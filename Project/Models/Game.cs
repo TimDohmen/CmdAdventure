@@ -54,6 +54,8 @@ Do you dare go north?");
       three.Items.Add(drink);
       four.Items.Add(torch);
 
+
+
       CurrentRoom = start;
     }
     public Game()

@@ -12,12 +12,24 @@ namespace CmdAdventure.Project.Models
     public string Description { get; set; }
     public List<Item> Items { get; set; }
     public Dictionary<string, IRoom> Exits { get; set; }
+    public Dictionary<IRoom, Item> Unlockable { get; set; }
 
-    public bool Locked()
+    public bool Locked { get; set; } = true;
+
+    public void UseItem(Item itemName)
     {
-      return false;
-    }
+      if (Unlockable.ContainsValue(itemName))
+      {
+        Locked = false;
+        System.Console.WriteLine("Unlocked door");
+      }
+      else
+      {
+        System.Console.WriteLine("Item has no use here");
+      }
 
+
+    }
     public string GetTemplate()
     {
       string item = "";
@@ -43,22 +55,29 @@ You are now in {Name}
     public IRoom Move(string direction)
     {
       IRoom room = this;
-      if (room is TrapRoom)
+      if (room is TrapRoom && Locked == true)
       {
         TrapRoom trap = (TrapRoom)room;
-        trap.Locked();
         System.Console.WriteLine("locked door baby");
+        return this;
       }
-      if (Exits.ContainsKey(direction))
+      else
       {
-        return Exits[direction];
+        if (Exits.ContainsKey(direction))
+        {
+          return Exits[direction];
+        }
+        return this;
       }
-      return this;
 
     }
     public void AddRoomConnection(IRoom room, string direction)
     {
       Exits.Add(direction, room);
+    }
+    public void addUnlockable(Item item, TrapRoom room)
+    {
+      Unlockable.Add(room, item);
     }
     public TrapRoom(string name, string description)
     {
@@ -66,6 +85,7 @@ You are now in {Name}
       Description = description;
       Items = new List<Item>();
       Exits = new Dictionary<string, IRoom>();
+      Unlockable = new Dictionary<IRoom, Item>();
     }
 
   }

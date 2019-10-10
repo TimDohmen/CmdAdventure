@@ -55,6 +55,9 @@ namespace ConsoleAdventure.Project.Controllers
         case "inventory":
           _gameService.Inventory();
           break;
+        case "use":
+          _gameService.UseItem(option);
+          break;
         default:
           System.Console.WriteLine("Enter Valid Command");
           break;
