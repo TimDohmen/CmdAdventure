@@ -10,7 +10,7 @@ namespace ConsoleAdventure.Project.Models
     //NOTE Make yo rooms here...
     public void Setup()
     {
-      Room start = new Room("Dim ", "Dim lit room not a lot going on here");
+      Room start = new Room("Unkown ", "You come to your senses in a pile of your own vomit.");
       Room two = new Room("Outside", "To your north you hear a noise but to your west you see something mysterious");
       Room three = new Room("Westeros Bar", "The bar is very crowded but there is an open spot off to the side");
       Room four = new Room("Hidden Tunnel", "There is ancient markings on the walls and lit torchs leading down a corridor.");
@@ -57,7 +57,7 @@ Do you dare go north?");
     }
     public Game()
     {
-      CurrentPlayer = new Player("Timbo");
+      CurrentPlayer = new Player("");
       Setup();
     }
   }

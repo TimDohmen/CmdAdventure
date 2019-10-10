@@ -37,8 +37,7 @@ namespace ConsoleAdventure.Project.Models
         exits += exit.Key + " ";
       }
 
-      return $@"
-      
+      return $@"    
 You are now in {Name}
  {Description}
  

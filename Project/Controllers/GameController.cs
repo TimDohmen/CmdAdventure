@@ -13,6 +13,9 @@ namespace ConsoleAdventure.Project.Controllers
     //NOTE Makes sure everything is called to finish Setup and Starts the Game loop
     public void Run()
     {
+      System.Console.WriteLine("whats your name");
+      string player = Console.ReadLine();
+      _gameService.Setup(player);
       while (true)
       {
         GetUserInput();
@@ -35,10 +38,11 @@ namespace ConsoleAdventure.Project.Controllers
       {
 
         case "look":
-          Console.Clear()
+          Console.Clear();
           _gameService.Look();
           break;
         case "go":
+          Console.Clear();
           _gameService.Go(option);
           break;
         case "help":
@@ -65,7 +69,9 @@ namespace ConsoleAdventure.Project.Controllers
       foreach (string message in _gameService.Messages)
       {
         System.Console.WriteLine(message);
+
       }
+      _gameService.Messages.Clear();
     }
 
   }

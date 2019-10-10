@@ -50,7 +50,7 @@ Type use (item) to use item
 
     public void Look()
     {
-      Messages.Add(_game.CurrentRoom.GetTemplate());
+      Messages.Add($" {_game.CurrentPlayer.Name}  {_game.CurrentRoom.GetTemplate()}");
     }
 
     public void Quit()
@@ -67,6 +67,7 @@ Type use (item) to use item
 
     public void Setup(string playerName)
     {
+      _game.CurrentPlayer.Name = playerName;
     }
     ///<summary>When taking an item be sure the item is in the current room before adding it to the player inventory, Also don't forget to remove the item from the room it was picked up in</summary>
     public void TakeItem(string itemName)
@@ -94,6 +95,7 @@ Type use (item) to use item
     {
       _game = new Game();
       Messages = new List<string>();
+
     }
 
   }
