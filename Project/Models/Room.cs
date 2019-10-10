@@ -30,11 +30,11 @@ namespace ConsoleAdventure.Project.Models
     public string GetTemplate()
     {
       string item = "";
-      Items.ForEach(i => item += $"\n{i.Name}");
+      Items.ForEach(i => item += $"\n{i.Name }");
       string exits = "";
       foreach (var exit in Exits)
       {
-        exits += exit.Key;
+        exits += exit.Key + " ";
       }
 
       return $@"
@@ -46,7 +46,7 @@ You are now in {Name}
  {item}
 
  You also have room(s) to your
- {exits}
+ {exits + ""}  
  ";
     }
     public Room(string name, string description)
