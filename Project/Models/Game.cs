@@ -16,12 +16,12 @@ namespace ConsoleAdventure.Project.Models
       IRoom three = new TrapRoom("Westeros Bar", "The bar is very crowded but there is an open spot off to the side");
       IRoom four = new Room("Hidden Tunnel", "There is ancient markings on the walls and lit torchs leading down a corridor.");
       IRoom five = new Room("Courtyard", "You see large arch doors to your south but a smaller normal door to your east.");
-      IRoom six = new Room("Jailer", "You walk into the room to see a group of guards sitting around a table looking up at you.");
+      IRoom six = new TrapRoom("Jailer", "You walk into the room to see a group of guards sitting around a table looking up at you.");
       IRoom seven = new Room("Dark Hallway", $@"
 You enter the arch doors to a long dark hallway. 
 Do you dare go north?");
-      IRoom eight = new Room("Throne Room", "There is the Iron Throne is with nobody to claim it... Do you dare sit in the throne?");
-
+      IRoom eight = new ThroneRoom("Throne Room", "There is the Iron Throne with nobody to claim it... Do you dare sit in the throne");
+      IRoom nine = new TrapRoom("Kings Room", "King Jeoffrey is sleeping with his Crown tucked under his arms.... ");
       start.AddRoomConnection(two, "west");
       two.AddRoomConnection(start, "east");
 
@@ -53,8 +53,13 @@ Do you dare go north?");
       start.Items.Add(sword);
       three.Items.Add(drink);
       four.Items.Add(torch);
+      nine.Items.Add(crown);
 
-      (three as TrapRoom).addUnlockable(sword);
+
+      (three as TrapRoom).addUnlockable(drink);
+      (eight as ThroneRoom).addUnlockable(crown);
+      (six as ThroneRoom).addUnlockable(sword);
+
 
       CurrentRoom = start;
     }

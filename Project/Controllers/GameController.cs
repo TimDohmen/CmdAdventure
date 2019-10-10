@@ -58,9 +58,45 @@ namespace ConsoleAdventure.Project.Controllers
         case "use":
           _gameService.UseItem(option);
           break;
+        case "q":
+          _gameService.Quit();
+          break;
+
+        case "sit":
+          if (!_gameService.getCurrentRoom())
+          {
+            System.Console.WriteLine("Invalid command");
+          }
+          else
+          {
+            _gameService.Go(command);
+            System.Console.WriteLine("As you are approaching you hear footsteps coming up behind you, do you continue to the Throne?");
+            string final = Console.ReadLine();
+            switch (final)
+            {
+              case "yes":
+                _gameService.Go(command);
+                System.Console.WriteLine("you win");
+                Environment.Exit(0);
+                break;
+              case "no":
+                System.Console.WriteLine("guards come storming in and arrest you");
+                _gameService.Reset();
+                break;
+              default:
+                System.Console.WriteLine("Please Enter Valid Command");
+                break;
+            }
+          }
+          break;
+
+
+
+
         default:
           System.Console.WriteLine("Enter Valid Command");
           break;
+
 
       }
 

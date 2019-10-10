@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using CmdAdventure.Project.Models;
 using ConsoleAdventure.Project.Interfaces;
@@ -11,11 +12,35 @@ namespace ConsoleAdventure.Project
 
     public List<string> Messages { get; set; }
 
-
+    public bool getCurrentRoom()
+    {
+      IRoom room = _game.CurrentRoom;
+      if (room is ThroneRoom)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
     public void Go(string direction)
     {
       string from = _game.CurrentRoom.Name;
+
+      IRoom room = _game.CurrentRoom;
+      if (room is ThroneRoom)
+      {
+        _game.CurrentRoom.Move(direction);
+
+        ThroneRoom thisRoom = (ThroneRoom)room;
+        Messages.Add(thisRoom.TakeThrone());
+
+      }
+
       _game.CurrentRoom = _game.CurrentRoom.Move(direction);
+
+
       string to = _game.CurrentRoom.Name;
 
       if (from == to)
@@ -56,14 +81,15 @@ Type use (item) to use item
 
     public void Quit()
     {
-      throw new System.NotImplementedException();
+      Environment.Exit(0);
     }
     ///<summary>
     ///Restarts the game 
     ///</summary>
     public void Reset()
     {
-      throw new System.NotImplementedException();
+      _game.CurrentPlayer.Inventory.Clear();
+      _game.Setup();
     }
 
     public void Setup(string playerName)
@@ -116,8 +142,8 @@ Type use (item) to use item
             System.Console.WriteLine("using item in trapservice");
           }
         }
-
       }
+
     }
 
     public GameService()
