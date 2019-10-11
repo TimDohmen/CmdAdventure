@@ -17,7 +17,7 @@ namespace ConsoleAdventure.Project.Models
       IRoom four = new Room("Hidden Tunnel", "There is ancient markings on the walls and lit torchs leading down a corridor.");
       IRoom five = new Room("Courtyard", "You see large arch doors to your south but a smaller normal door to your east.");
       IRoom six = new TrapRoom("Jailor", "You walk into the room to see a group of guards sitting around a table looking up at you.");
-      IRoom seven = new Room("Dark Hallway", $@"
+      IRoom seven = new SafeTrapRoom("Dark Hallway", $@"
 You enter the arch doors to a long dark hallway. 
 Do you dare go north?");
       IRoom eight = new ThroneRoom("Throne Room", "There is the Iron Throne with nobody to claim it... Do you dare sit in the throne");
@@ -43,8 +43,8 @@ Do you dare go north?");
       seven.AddRoomConnection(eight, "north");
       eight.AddRoomConnection(seven, "south");
 
-      five.AddRoomConnection(nine, "east");
-      nine.AddRoomConnection(five, "west");
+      nine.AddRoomConnection(seven, "east");
+      seven.AddRoomConnection(nine, "west");
 
       eight.AddRoomConnection(start, "secret");
 
