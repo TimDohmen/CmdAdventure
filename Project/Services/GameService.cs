@@ -155,6 +155,22 @@ Type use (item) to use item
           }
         }
       }
+      else if (room is SafeTrapRoom)
+      {
+        for (int i = 0; i < _game.CurrentPlayer.Inventory.Count; i++)
+        {
+          var item = _game.CurrentPlayer.Inventory[i];
+          if (itemName != item.Name.ToLower())
+          {
+            Messages.Add("Invalid Item");
+          }
+          else
+          {
+            SafeTrapRoom trap = (SafeTrapRoom)room;
+            trap.UseItem(item);
+          }
+        }
+      }
 
     }
 

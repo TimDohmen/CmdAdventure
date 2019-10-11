@@ -7,6 +7,10 @@ namespace CmdAdventure.Project.Models
 {
   public class ThroneRoom : IRoom
   {
+    public void Unlock()
+    {
+
+    }
 
     public string Name { get; set; }
     public string Description { get; set; }

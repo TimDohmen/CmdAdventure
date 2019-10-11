@@ -55,15 +55,17 @@ Do you dare go north?");
       Item drink = new Item("Ale", "Biggest container of beer you've ever seen.");
       Item torch = new Item("Torch", "Used to light even the darkest of places.");
       Item crown = new Item("Crown", "Fit for a king");
-
+      Item test = new Item("key", "This must open something important");
       start.Items.Add(sword);
       three.Items.Add(drink);
       four.Items.Add(torch);
       nine.Items.Add(crown);
-      // six.Items.Add(crown);
+      seven.Items.Add(test);
 
 
-      (nine as TrapRoom).addUnlockable(new Item("Key", "This must open somethiwng important"));
+      (seven as SafeTrapRoom).addUnlockable(new Item("key", "This must open something important"));
+      (seven as SafeTrapRoom).addUnlockable(test);
+
       (three as TrapRoom).addUnlockable(drink);
       (eight as ThroneRoom).addUnlockable(crown);
       (six as TrapRoom).addUnlockable(sword);

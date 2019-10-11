@@ -16,14 +16,18 @@ namespace CmdAdventure.Project.Models
 
     public bool Locked { get; set; } = true;
 
+    public void Unlock()
+    {
+      Locked = false;
+    }
     public void UseItem(Item itemName)
     {
       if (Unlockable.Contains(itemName))
       {
-        Locked = false;
         if (itemName.Name.ToString().ToLower() == "sword")
         {
-          Items.Add(new Item("Key", "This must open somethiwng important"));
+          Items.Add(new Item("Key", "This must open something important"));
+          Locked = false;
 
           System.Console.WriteLine("You slice the guards down and manage to get away.");
         }

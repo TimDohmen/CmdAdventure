@@ -7,6 +7,10 @@ namespace ConsoleAdventure.Project.Models
   public class Room : IRoom
   {
 
+    public void Unlock()
+    {
+
+    }
     public bool Locked()
     {
       return false;

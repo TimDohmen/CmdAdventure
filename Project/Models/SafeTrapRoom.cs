@@ -7,6 +7,12 @@ namespace CmdAdventure.Project.Models
 {
   public class SafeTrapRoom : IRoom
   {
+    public void Unlock()
+    {
+      Locked = false;
+      IRoom room = this;
+
+    }
     public string Name { get; set; }
     public string Description { get; set; }
     public List<Item> Items { get; set; }
@@ -21,18 +27,22 @@ namespace CmdAdventure.Project.Models
       {
         if (itemName.Name.ToString().ToLower() == "key")
         {
-          Locked = false;
-
+          Unlock();
           System.Console.WriteLine("Unlocked door");
+
         }
-        System.Console.WriteLine("Y.");
+
+
       }
       else
       {
-        System.Console.WriteLine("Item has no use here");
+        System.Console.WriteLine("You wave your" + itemName.ToString() + " around but it has no use here");
       }
 
     }
+
+
+
     public string GetTemplate()
     {
       string item = "";
@@ -110,6 +120,7 @@ You are now in {Name}
           }
           else
           {
+
             return Exits[direction];
           }
         }
