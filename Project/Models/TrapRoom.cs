@@ -26,10 +26,16 @@ namespace CmdAdventure.Project.Models
       {
         if (itemName.Name.ToString().ToLower() == "sword")
         {
-          Items.Add(new Item("Key", "This must open something important"));
+          Items.Add(new Item("Chainmail", "This would provide some good protection."));
           Locked = false;
 
           System.Console.WriteLine("You slice the guards down and manage to get away.");
+        }
+        else if (itemName.Name.ToString().ToLower() == "torch")
+        {
+          Locked = false;
+
+          System.Console.WriteLine("You wield the torch.");
         }
         System.Console.WriteLine("Unlocked door");
       }
@@ -99,6 +105,10 @@ You are now in {Name}
       IRoom room = this;
       if (room is TrapRoom && Locked == true)
       {
+        if (room.Name == "Hidden Tunnel")
+        {
+          System.Console.WriteLine("Its took dark to see");
+        }
         TrapRoom trap = (TrapRoom)room;
         System.Console.WriteLine("locked door baby");
         return this;
