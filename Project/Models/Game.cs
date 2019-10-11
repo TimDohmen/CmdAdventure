@@ -43,6 +43,9 @@ Do you dare go north?");
       seven.AddRoomConnection(eight, "north");
       eight.AddRoomConnection(seven, "south");
 
+      five.AddRoomConnection(nine, "east");
+      nine.AddRoomConnection(five, "west");
+
       eight.AddRoomConnection(start, "secret");
 
 
@@ -60,7 +63,7 @@ Do you dare go north?");
       // six.Items.Add(crown);
 
 
-
+      (nine as TrapRoom).addUnlockable(new Item("Key", "This must open somethiwng important"));
       (three as TrapRoom).addUnlockable(drink);
       (eight as ThroneRoom).addUnlockable(crown);
       (six as TrapRoom).addUnlockable(sword);

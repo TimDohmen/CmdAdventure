@@ -75,8 +75,6 @@ namespace ConsoleAdventure.Project.Controllers
             {
               case "yes":
                 _gameService.Go(command);
-                System.Console.WriteLine("you win");
-                Environment.Exit(0);
                 break;
               case "no":
                 System.Console.WriteLine("guards come storming in and arrest you");

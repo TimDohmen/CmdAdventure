@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ConsoleAdventure.Project.Interfaces;
 using ConsoleAdventure.Project.Models;
@@ -48,16 +49,20 @@ You are now in {Name}
     }
 
 
-    public string TakeThrone()
+    public string TakeThrone(string name)
     {
-      return "You sit upon the throne ";
+      return "You sit upon the throne and hear the people start chanting" + name + ". . ." + name + " . . . " + name;
     }
     public IRoom Move(string direction)
     {
       IRoom room = this;
       if (room is ThroneRoom && direction == "sit")
       {
-        return this;
+        if (Locked == false)
+        {
+          return this;
+        }
+        return Exits["secret"];
       }
       else
       {

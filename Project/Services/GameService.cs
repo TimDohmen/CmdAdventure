@@ -34,8 +34,14 @@ namespace ConsoleAdventure.Project
         if (_game.CurrentRoom.Move(direction) == _game.CurrentRoom)
         {
           ThroneRoom thisRoom = (ThroneRoom)room;
-
-          Messages.Add(thisRoom.TakeThrone());
+          Messages.Add(thisRoom.TakeThrone(_game.CurrentPlayer.Name));
+        }
+        else if (room is TrapRoom)
+        {
+          if (_game.CurrentRoom.Move(direction) == _game.CurrentRoom)
+          {
+            TrapRoom thisRoom = (TrapRoom)room;
+          }
         }
         else
         {
@@ -63,6 +69,8 @@ Type look to see where you are and what option you have
 Type go (direction) to travel
 
 Type take (item) to take item from a room
+
+Type Inventory to view items in inventory
 
 Type use (item) to use item
 ");
@@ -144,7 +152,6 @@ Type use (item) to use item
           {
             TrapRoom trap = (TrapRoom)room;
             trap.UseItem(item);
-            System.Console.WriteLine("using item in trapservice");
           }
         }
       }

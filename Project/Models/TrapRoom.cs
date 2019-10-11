@@ -23,7 +23,8 @@ namespace CmdAdventure.Project.Models
         Locked = false;
         if (itemName.Name.ToString().ToLower() == "sword")
         {
-          Items.Add(new Item("Crown", "The one and only golden crown"));
+          Items.Add(new Item("Key", "This must open somethiwng important"));
+
           System.Console.WriteLine("You slice the guards down and manage to get away.");
         }
         System.Console.WriteLine("Unlocked door");
