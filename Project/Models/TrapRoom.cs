@@ -41,6 +41,8 @@ namespace CmdAdventure.Project.Models
       }
       else
       {
+        Messages.Add($@"yoyo");
+
         System.Console.WriteLine("Item has no use here");
       }
 
@@ -76,8 +78,10 @@ Someone really left a mess in here...";
         if (Items.Count != 0)
         {
           template += $@"
-  Through the gore you see something shiny 
- {item}";
+Through the gore you see something shiny 
+
+  {item}
+";
         }
 
         template += $@"The only way out is
@@ -109,9 +113,19 @@ You are now in {Name}
         {
           System.Console.WriteLine("Its took dark to see");
         }
-        TrapRoom trap = (TrapRoom)room;
-        System.Console.WriteLine("locked door baby");
+        else if (room.Name == "Pub")
+        {
+          System.Console.WriteLine("You should try to relax a little.");
+        }
+        else
+        {
+          TrapRoom trap = (TrapRoom)room;
+          System.Console.WriteLine("Locked door find a way out");
+          return this;
+        }
+
         return this;
+
       }
       else
       {
@@ -138,7 +152,9 @@ You are now in {Name}
       Items = new List<Item>();
       Exits = new Dictionary<string, IRoom>();
       Unlockable = new List<Item>();
+
     }
+
 
   }
 }

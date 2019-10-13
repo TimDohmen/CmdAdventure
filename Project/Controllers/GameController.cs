@@ -10,7 +10,6 @@ namespace ConsoleAdventure.Project.Controllers
   {
     private GameService _gameService = new GameService();
 
-    //NOTE Makes sure everything is called to finish Setup and Starts the Game loop
     public void Run()
     {
       Console.Clear();
@@ -39,26 +38,34 @@ namespace ConsoleAdventure.Project.Controllers
       {
 
         case "look":
+        case "l":
           Console.Clear();
           _gameService.Look();
           break;
         case "go":
+        case "g":
           Console.Clear();
           _gameService.Go(option);
           break;
         case "help":
+        case "h":
           _gameService.Help();
           break;
         case "take":
+        case "t":
           _gameService.TakeItem(option);
           break;
         case "inventory":
+        case "i":
+        case "inv":
           _gameService.Inventory();
           break;
         case "use":
+        case "u":
           _gameService.UseItem(option);
           break;
         case "q":
+        case "quit":
           _gameService.Quit();
           break;
 
@@ -74,10 +81,12 @@ namespace ConsoleAdventure.Project.Controllers
             switch (final)
             {
               case "yes":
+              case "y":
                 _gameService.Go(command);
                 break;
               case "no":
-                System.Console.WriteLine("guards come storming in and arrest you");
+              case "n":
+                System.Console.WriteLine("Guards come storming in and arrest you because you are not the real king.");
                 _gameService.Reset();
                 break;
               default:
@@ -99,7 +108,6 @@ namespace ConsoleAdventure.Project.Controllers
 
     }
 
-    //NOTE this should print your messages for the game.
     private void Print()
     {
 
