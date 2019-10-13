@@ -37,11 +37,17 @@ namespace CmdAdventure.Project.Models
 
           System.Console.WriteLine("You wield the torch.");
         }
+        else if (itemName.Name.ToString().ToLower() == "ale")
+        {
+          Locked = false;
+          System.Console.WriteLine("You drink the ale.");
+        }
+        Locked = false;
+
         System.Console.WriteLine("Unlocked door");
       }
       else
       {
-        Messages.Add($@"yoyo");
 
         System.Console.WriteLine("Item has no use here");
       }
@@ -63,10 +69,10 @@ You are now in {Name}
  {Description}
  
  In this room you find:
- {item}
+   {item}
 
  You also have room(s) to your
- {exits + ""}  
+ {exits.ToUpper() + "   "}  
  ";
       }
       ///Changes Jailor room based on used sword or not
@@ -94,16 +100,14 @@ Through the gore you see something shiny
 You are now in {Name}
  {Description}
  
- In this room you find:
+In this room you find:
  {item}
 
- You also have room(s) to your
- {exits + ""}  
+You also have room(s) to your
+ {exits.ToUpper() + ""} 
  ";
       }
-
     }
-
     public IRoom Move(string direction)
     {
       IRoom room = this;
@@ -123,9 +127,7 @@ You are now in {Name}
           System.Console.WriteLine("Locked door find a way out");
           return this;
         }
-
         return this;
-
       }
       else
       {
@@ -135,7 +137,6 @@ You are now in {Name}
         }
         return this;
       }
-
     }
     public void AddRoomConnection(IRoom room, string direction)
     {
@@ -152,9 +153,6 @@ You are now in {Name}
       Items = new List<Item>();
       Exits = new Dictionary<string, IRoom>();
       Unlockable = new List<Item>();
-
     }
-
-
   }
 }

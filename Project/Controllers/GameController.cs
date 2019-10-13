@@ -13,7 +13,7 @@ namespace ConsoleAdventure.Project.Controllers
     public void Run()
     {
       Console.Clear();
-      System.Console.WriteLine("whats your name");
+      System.Console.WriteLine("What's your name ?");
       string player = Console.ReadLine();
       _gameService.Setup(player);
       while (true)
@@ -27,6 +27,7 @@ namespace ConsoleAdventure.Project.Controllers
     //NOTE Gets the user input, calls the appropriate command, and passes on the option if needed.
     public void GetUserInput()
     {
+      _gameService.Look();
       Console.WriteLine("What would you like to do?");
       string input = Console.ReadLine().ToLower() + " ";
       string command = input.Substring(0, input.IndexOf(" "));

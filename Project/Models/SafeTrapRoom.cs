@@ -11,7 +11,6 @@ namespace CmdAdventure.Project.Models
     {
       Locked = false;
       IRoom room = this;
-
     }
     public string Name { get; set; }
     public string Description { get; set; }
@@ -29,19 +28,13 @@ namespace CmdAdventure.Project.Models
         {
           Unlock();
           System.Console.WriteLine("Unlocked door");
-
         }
-
-
       }
       else
       {
         System.Console.WriteLine("You wave your" + itemName.ToString() + " around but it has no use here");
       }
-
     }
-
-
 
     public string GetTemplate()
     {
@@ -62,7 +55,7 @@ You are now in {Name}
  {item}
 
  You also have room(s) to your
- {exits + ""}  
+ {exits.ToUpper() + ""}  
  ";
       }
       ///Changes Jailor room based on used sword or not
@@ -95,39 +88,22 @@ You are now in {Name}
  {exits + ""}  
  ";
       }
-
     }
-
     public IRoom Move(string direction)
     {
-      IRoom room = this;
-      //   if (room is SafeTrapRoom && Locked == true)
-      //   {
-      //     SafeTrapRoom trap = (SafeTrapRoom)room;
-
-      //     Console.WriteLine("locked door baby");
-      //     return this;
-      //   }
-      //   else
-
+      if (Exits.ContainsKey(direction))
       {
-        if (Exits.ContainsKey(direction))
+        if (Exits[direction].Move("west") == Exits[direction] && Exits[direction].Move("south") == Exits[direction])
         {
-          if (Exits[direction].Move("west") == Exits[direction] && Exits[direction].Move("south") == Exits[direction])
-          {
-            System.Console.WriteLine("You try to open the door but it is locked shut...");
-            return this;
-          }
-          else
-          {
-
-            return Exits[direction];
-          }
+          System.Console.WriteLine("You try to open the door but it is locked shut...");
+          return this;
         }
-
+        else
+        {
+          return Exits[direction];
+        }
       }
       return this;
-
     }
     public void AddRoomConnection(IRoom room, string direction)
     {

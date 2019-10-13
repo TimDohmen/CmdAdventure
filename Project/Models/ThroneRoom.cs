@@ -47,12 +47,7 @@ namespace CmdAdventure.Project.Models
 You are now in {Name}
  {Description}
  ";
-
-
-
     }
-
-
     public string TakeThrone(string name)
     {
       return "You sit upon the throne and hear the people start chanting" + name + ". . ." + name + " . . . " + name;

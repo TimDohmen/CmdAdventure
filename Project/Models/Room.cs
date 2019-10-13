@@ -59,13 +59,13 @@ namespace ConsoleAdventure.Project.Models
 
       return $@"    
 You are now in {Name}
- {Description}
+  {Description}
  
  In this room you find:
- {item}
+      {item}
 
- You also have room(s) to your
- {exits + ""}  
+ You also have exit(s) to your
+   {exits.ToUpper() + "   "}  
  ";
     }
     public Room(string name, string description)

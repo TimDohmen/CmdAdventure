@@ -56,7 +56,7 @@ namespace ConsoleAdventure.Project
 
       if (from == to)
       {
-        Messages.Add("Invalid Room");
+        Messages.Add("Area not available currently");
         return;
       }
       Messages.Add($"Traveled to {to} from {from}");
@@ -89,7 +89,8 @@ Type use (item) to use item
 
     public void Look()
     {
-      Messages.Add($" {_game.CurrentPlayer.Name}  {_game.CurrentRoom.GetTemplate()}");
+      Messages.Add($@" {_game.CurrentPlayer.Name}'s Adventure  
+      {_game.CurrentRoom.GetTemplate()}");
     }
 
     public void Quit()
@@ -128,8 +129,6 @@ Type use (item) to use item
         _game.CurrentPlayer.Inventory.Add(item);
         _game.CurrentRoom.Items.Remove(item);
       }
-
-
     }
     ///<summary>
     ///No need to Pass a room since Items can only be used in the CurrentRoom
@@ -141,6 +140,8 @@ Type use (item) to use item
       IRoom room = _game.CurrentRoom;
       if (room is TrapRoom)
       {
+        // _game.CurrentPlayer.Inventory.Find(itemName);
+        // var itemm = _game.CurrentPlayer.Inventory.IndexOf(itemName as Item);
         for (int i = 0; i < _game.CurrentPlayer.Inventory.Count; i++)
         {
           var item = _game.CurrentPlayer.Inventory[i];
@@ -171,15 +172,11 @@ Type use (item) to use item
           }
         }
       }
-
     }
-
     public GameService()
     {
       _game = new Game();
       Messages = new List<string>();
-
     }
-
   }
 }
