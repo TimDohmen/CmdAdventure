@@ -121,14 +121,16 @@ Type use (item) to use item
       for (int i = 0; i < _game.CurrentRoom.Items.Count; i++)
       {
         var item = _game.CurrentRoom.Items[i];
-        if (itemName != item.Name.ToLower())
+        if (item.Name.ToLower() == itemName)
         {
-          Messages.Add("Invalid Item");
-          return;
+          Messages.Add($"Picked up {item.Name}");
+          _game.CurrentPlayer.Inventory.Add(item);
+          _game.CurrentRoom.Items.Remove(item);
+          _game.CurrentRoom.Items.Clear();
         }
-        _game.CurrentPlayer.Inventory.Add(item);
-        _game.CurrentRoom.Items.Remove(item);
+        return;
       }
+      Messages.Add("Invalid Item");
     }
     ///<summary>
     ///No need to Pass a room since Items can only be used in the CurrentRoom
@@ -145,15 +147,16 @@ Type use (item) to use item
         for (int i = 0; i < _game.CurrentPlayer.Inventory.Count; i++)
         {
           var item = _game.CurrentPlayer.Inventory[i];
-          if (itemName != item.Name.ToLower())
-          {
-            Messages.Add("Invalid Item");
-          }
-          else
+          if (item.Name.ToLower() == itemName)
           {
             TrapRoom trap = (TrapRoom)room;
             trap.UseItem(item);
+            Messages.Add($"Picked up {item.Name}");
+            return;
           }
+        }
+        {
+          Messages.Add("Invalid Item");
         }
       }
       else if (room is SafeTrapRoom)
@@ -161,15 +164,16 @@ Type use (item) to use item
         for (int i = 0; i < _game.CurrentPlayer.Inventory.Count; i++)
         {
           var item = _game.CurrentPlayer.Inventory[i];
-          if (itemName != item.Name.ToLower())
-          {
-            Messages.Add("Invalid Item");
-          }
-          else
+          if (item.Name.ToLower() == itemName)
           {
             SafeTrapRoom trap = (SafeTrapRoom)room;
             trap.UseItem(item);
+            Messages.Add($"Picked up {item.Name}");
+            return;
           }
+        }
+        {
+          Messages.Add("Invalid Item");
         }
       }
     }
