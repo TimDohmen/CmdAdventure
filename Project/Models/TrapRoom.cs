@@ -62,7 +62,19 @@ namespace CmdAdventure.Project.Models
       {
         exits += exit.Key + " ";
       }
-      if (Locked == true)
+      if (Locked == true && Items.Count == 0)
+      {
+        return $@"    
+You are now in {Name}
+ {Description}
+ 
+  No items found in this room
+
+ You also have room(s) to your
+ {exits.ToUpper() + "   "}  
+ ";
+      }
+      else if (Locked == true)
       {
         return $@"    
 You are now in {Name}
@@ -75,6 +87,7 @@ You are now in {Name}
  {exits.ToUpper() + "   "}  
  ";
       }
+
       ///Changes Jailor room based on used sword or not
       else if (Locked == false && Name.ToString().ToLower() == "jailor")
       {
@@ -103,6 +116,18 @@ The king tosses and turns without his crown by his side
     The only way out is
  { exits.ToUpper() + ""}";
         return template;
+      }
+      else if (Items.Count == 0)
+      {
+        return $@"    
+You are now in {Name}
+ {Description}
+ 
+No items found in this room
+
+You also have room(s) to your
+ {exits.ToUpper() + ""} 
+ ";
       }
       else
       {

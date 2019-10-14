@@ -46,6 +46,7 @@ namespace CmdAdventure.Project.Models
       {
         exits += exit.Key + " ";
       }
+
       if (Locked == true)
       {
         return $@"    
@@ -65,11 +66,11 @@ You are now in {Name}
 You are now in {Name}
  {Description}
  
- In this room you find:
- {item}
+ No Items found in this room
+
 
  You also have room(s) to your
- {exits + ""}  
+ {exits.ToUpper() + ""}  
  ";
       }
     }

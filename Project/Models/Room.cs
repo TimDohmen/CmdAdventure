@@ -57,7 +57,22 @@ namespace ConsoleAdventure.Project.Models
         exits += exit.Key + " ";
       }
 
-      return $@"    
+
+      if (Items.Count == 0)
+      {
+        return $@"    
+You are now in {Name}
+  {Description}
+ 
+ No items found in this room
+
+ You also have exit(s) to your
+   {exits.ToUpper() + "   "}  
+ ";
+      }
+      else
+      {
+        return $@"    
 You are now in {Name}
   {Description}
  
@@ -67,6 +82,7 @@ You are now in {Name}
  You also have exit(s) to your
    {exits.ToUpper() + "   "}  
  ";
+      }
     }
     public Room(string name, string description)
     {
