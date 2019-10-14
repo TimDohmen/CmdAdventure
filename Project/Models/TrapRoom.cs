@@ -28,18 +28,19 @@ namespace CmdAdventure.Project.Models
         {
           Items.Add(new Item("Chainmail", "This would provide some good protection."));
           Locked = false;
-          return "You slice the guards down and manage to get away.";
+          return "You manage to slice the guards down with little effort.";
         }
         else if (itemName.Name.ToString().ToLower() == "torch")
         {
           Locked = false;
 
-          return "You wield the torch.";
+          return "You wield the torch. Hopefully it doesn't go out.";
         }
         else if (itemName.Name.ToString().ToLower() == "ale")
         {
           Locked = false;
-          return "You drink the ale.";
+
+          return "You drink the ale. Another drink might not be so bad.";
         }
         Locked = false;
         return "Unlocked door";

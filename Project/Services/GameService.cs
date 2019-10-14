@@ -148,6 +148,7 @@ Type use itemName to use item
             TrapRoom trap = (TrapRoom)room;
             // trap.UseItem(item);
             Messages.Add(trap.UseItem(item));
+            _game.CurrentPlayer.Inventory.Remove(item);
             Messages.Add($"Used your {item.Name}");
             return;
           }
@@ -164,7 +165,8 @@ Type use itemName to use item
           if (item.Name.ToLower() == itemName)
           {
             SafeTrapRoom trap = (SafeTrapRoom)room;
-            trap.UseItem(item);
+            Messages.Add(trap.UseItem(item));
+            _game.CurrentPlayer.Inventory.Remove(item);
             Messages.Add($"Used your {item.Name}");
             return;
           }

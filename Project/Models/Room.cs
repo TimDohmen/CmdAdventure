@@ -33,12 +33,12 @@ namespace ConsoleAdventure.Project.Models
 
     public IRoom Move(string direction)
     {
-      IRoom room = this;
-      if (room is TrapRoom)
-      {
-        TrapRoom trap = (TrapRoom)room;
-        System.Console.WriteLine("We hit the lock");
-      }
+      // IRoom room = this;
+      // if (room is TrapRoom)
+      // {
+      //   TrapRoom trap = (TrapRoom)room;
+      //   System.Console.WriteLine("We hit the lock");
+      // }
       if (Exits.ContainsKey(direction))
       {
         return Exits[direction];
