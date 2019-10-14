@@ -12,14 +12,14 @@ namespace ConsoleAdventure.Project.Models
     public void Setup()
     {
       IRoom start = new Room("An Unknown Room", "You come to your senses in a pile of your own vomit.");
-      IRoom two = new Room("Outside", "To your north you hear a noise but to your west you see something mysterious");
+      IRoom two = new Room("Outside", "To your north you hear a loud ruckus but to your west you see somebody disappear down a sewage lid.");
       IRoom three = new TrapRoom("Pub", "The bar is very crowded but there is an open spot off to the side");
-      IRoom four = new TrapRoom("Hidden Tunnel", "There is ancient markings on the walls of this poorly lit corridor.");
+      IRoom four = new TrapRoom("Hidden Tunnel", "There is ancient markings on the walls of this poorly lit corridor the only way to advance is north.");
       IRoom five = new Room("Courtyard", "You see large arch doors to your north but a smaller normal door to your west.");
       IRoom six = new TrapRoom("Jailor", "You walk into the room to see a group of guards sitting around a table looking up at you.");
       IRoom seven = new SafeTrapRoom("Dark Hallway", $@"
-You enter the arch doors to a long dark hallway. 
-Do you dare go north?");
+    You enter the arch doors to a long dark hallway. 
+        Do you dare go north?");
       IRoom eight = new ThroneRoom("Throne Room", "There is the Iron Throne with nobody to claim it... Do you dare sit in the throne");
       IRoom nine = new TrapRoom("Kings Room", "The King is sleeping with his Crown tucked under his arms.... ");
       start.AddRoomConnection(two, "west");
