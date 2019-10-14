@@ -31,7 +31,6 @@ namespace CmdAdventure.Project.Models
       {
         System.Console.WriteLine("Item has no use here");
       }
-
     }
     public string GetTemplate()
     {
@@ -50,7 +49,8 @@ You are now in {Name}
     }
     public string TakeThrone(string name)
     {
-      return "You sit upon the throne and hear the people start chanting" + name + ". . ." + name + " . . . " + name;
+
+      return "You sit upon the throne and hear the people start chanting . . . " + name + ". . ." + name + " . . . " + name;
     }
     public IRoom Move(string direction)
     {

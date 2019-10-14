@@ -83,6 +83,19 @@ namespace ConsoleAdventure.Project.Controllers
               case "yes":
               case "y":
                 _gameService.Go(command);
+                System.Console.WriteLine("Do you want to play again? Y/N");
+                string replay = Console.ReadLine();
+                switch (replay)
+                {
+                  case "yes":
+                  case "y":
+                    _gameService.Reset();
+                    break;
+                  case "no":
+                  case "n":
+                    Environment.Exit(0);
+                    break;
+                }
                 break;
               case "no":
               case "n":

@@ -151,7 +151,7 @@ Type use (item) to use item
           {
             TrapRoom trap = (TrapRoom)room;
             trap.UseItem(item);
-            Messages.Add($"Picked up {item.Name}");
+            Messages.Add($"Used your {item.Name}");
             return;
           }
         }
@@ -168,7 +168,23 @@ Type use (item) to use item
           {
             SafeTrapRoom trap = (SafeTrapRoom)room;
             trap.UseItem(item);
-            Messages.Add($"Picked up {item.Name}");
+            Messages.Add($"Used your {item.Name}");
+            return;
+          }
+        }
+        {
+          Messages.Add("Invalid Item");
+        }
+      }
+      else if (room is ThroneRoom)
+      {
+        for (int i = 0; i < _game.CurrentPlayer.Inventory.Count; i++)
+        {
+          var item = _game.CurrentPlayer.Inventory[i];
+          if (item.Name.ToLower() == itemName)
+          {
+            ThroneRoom winningRoom = (ThroneRoom)room;
+            winningRoom.UseItem(item);
             return;
           }
         }

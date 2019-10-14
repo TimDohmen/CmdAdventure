@@ -93,7 +93,7 @@ You are now in {Name}
     {
       if (Exits.ContainsKey(direction))
       {
-        if (Exits[direction].Move("west") == Exits[direction] && Exits[direction].Move("south") == Exits[direction])
+        if (Exits[direction].Move("east") == Exits[direction] && Exits[direction].Move("south") == Exits[direction])
         {
           System.Console.WriteLine("You try to open the door but it is locked shut...");
           return this;
