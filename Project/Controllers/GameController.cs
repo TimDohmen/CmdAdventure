@@ -111,7 +111,12 @@ namespace ConsoleAdventure.Project.Controllers
                 case "y":
                 case "yeah":
                   Console.Clear();
+                  System.Console.WriteLine("What's your name ?");
+                  string player = Console.ReadLine();
+                  _gameService.Setup(player);
                   _gameService.Reset();
+                  Console.Clear();
+                  _gameService.Help();
                   break;
                 case "no":
                 case "n":

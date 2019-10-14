@@ -61,18 +61,18 @@ namespace ConsoleAdventure.Project
     {
       Messages.Add($@"
           Help Menu
+Type -
+       look to see where you are and what options you have
 
-Type look to see where you are and what options you have
+       go direction to travel
 
-Type go direction to travel
+       take itemName to take item from a room
 
-Type take itemName to take item from a room
+       inventory to view items in inventory
 
-Type Inventory to view items in inventory
+       use itemName to use item
 
-Type use itemName to use item
-
-Type help to revisit this menu.
+       help to revisit this menu.
 ");
     }
 
@@ -150,9 +150,9 @@ Type help to revisit this menu.
           if (item.Name.ToLower() == itemName)
           {
             TrapRoom trap = (TrapRoom)room;
-            // trap.UseItem(item);
+            trap.UseItem(item);
             Messages.Add(trap.UseItem(item));
-            _game.CurrentPlayer.Inventory.Remove(item);
+            // _game.CurrentPlayer.Inventory.Remove(item);
             Messages.Add($"Used your {item.Name}");
             return;
           }
@@ -170,7 +170,7 @@ Type help to revisit this menu.
           {
             SafeTrapRoom trap = (SafeTrapRoom)room;
             Messages.Add(trap.UseItem(item));
-            _game.CurrentPlayer.Inventory.Remove(item);
+            // _game.CurrentPlayer.Inventory.Remove(item);
             Messages.Add($"Used your {item.Name}");
             return;
           }
@@ -187,7 +187,22 @@ Type help to revisit this menu.
           if (item.Name.ToLower() == itemName)
           {
             ThroneRoom winningRoom = (ThroneRoom)room;
-            winningRoom.UseItem(item);
+            Messages.Add(winningRoom.UseItem(item));
+            return;
+          }
+        }
+        {
+          Messages.Add("Invalid Item");
+        }
+      }
+      else
+      {
+        for (int i = 0; i < _game.CurrentPlayer.Inventory.Count; i++)
+        {
+          var item = _game.CurrentPlayer.Inventory[i];
+          if (item.Name.ToLower() == itemName)
+          {
+            Messages.Add($"Used your {item.Name} but it has little effect here.");
             return;
           }
         }
