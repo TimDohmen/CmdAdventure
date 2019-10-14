@@ -60,6 +60,8 @@ namespace ConsoleAdventure.Project
     public void Help()
     {
       Messages.Add($@"
+          Help Menu
+
 Type look to see where you are and what options you have
 
 Type go direction to travel
@@ -69,6 +71,8 @@ Type take itemName to take item from a room
 Type Inventory to view items in inventory
 
 Type use itemName to use item
+
+Type help to revisit this menu.
 ");
     }
 

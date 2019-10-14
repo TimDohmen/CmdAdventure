@@ -87,10 +87,12 @@ namespace ConsoleAdventure.Project.Controllers
               case "yes":
               case "y":
               case "yeah":
+              case "continue":
                 _gameService.Go(command);
                 break;
               case "no":
               case "n":
+              case "stop":
                 System.Console.WriteLine("Guards come storming in and arrest you for getting too close to the throne.");
                 _gameService.Reset();
                 break;
@@ -101,7 +103,24 @@ namespace ConsoleAdventure.Project.Controllers
             if (final == "yes" && _gameService.getCurrentRoom() == true)
             {
               Print();
-              _gameService.Quit();
+              System.Console.WriteLine("Play Again?");
+              string repeat = Console.ReadLine();
+              switch (repeat)
+              {
+                case "yes":
+                case "y":
+                case "yeah":
+                  Console.Clear();
+                  _gameService.Reset();
+                  break;
+                case "no":
+                case "n":
+                  Environment.Exit(0);
+                  break;
+                default:
+                  System.Console.WriteLine("Please Enter Valid Command");
+                  break;
+              }
             }
           }
           break;
