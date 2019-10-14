@@ -15,7 +15,7 @@ namespace CmdAdventure.Project.Models
     public List<Item> Unlockable { get; set; }
 
     public bool Locked { get; set; } = true;
-
+    public int count { get; set; }
     public void Unlock()
     {
       Locked = false;
@@ -39,7 +39,11 @@ namespace CmdAdventure.Project.Models
         else if (itemName.Name.ToString().ToLower() == "ale")
         {
           Locked = false;
-
+          count++;
+          if (count > 8)
+          {
+            return "You drink until you can't see straight";
+          }
           return "You drink the ale. Another drink might not be so bad.";
         }
         Locked = false;

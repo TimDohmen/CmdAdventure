@@ -74,66 +74,72 @@ namespace ConsoleAdventure.Project.Controllers
           break;
 
         case "sit":
-          if (!_gameService.getCurrentRoom())
-          {
-            System.Console.WriteLine("Invalid command");
-          }
-          else
-          {
-            System.Console.WriteLine("As you are approaching you hear footsteps coming up behind you, do you continue to the Throne?");
-            string final = Console.ReadLine();
-            switch (final)
-            {
-              case "yes":
-              case "y":
-              case "yeah":
-              case "continue":
-                _gameService.Go(command);
-                break;
-              case "no":
-              case "n":
-              case "stop":
-                System.Console.WriteLine("Guards come storming in and arrest you for getting too close to the throne.");
-                _gameService.Reset();
-                break;
-              default:
-                System.Console.WriteLine("Please Enter Valid Command");
-                break;
-            }
-            if (final == "yes" && _gameService.getCurrentRoom() == true)
-            {
-              Print();
-              System.Console.WriteLine("Play Again?");
-              string repeat = Console.ReadLine();
-              switch (repeat)
-              {
-                case "yes":
-                case "y":
-                case "yeah":
-                  Console.Clear();
-                  System.Console.WriteLine("What's your name ?");
-                  string player = Console.ReadLine();
-                  _gameService.Setup(player);
-                  _gameService.Reset();
-                  Console.Clear();
-                  _gameService.Help();
-                  break;
-                case "no":
-                case "n":
-                  Environment.Exit(0);
-                  break;
-                default:
-                  System.Console.WriteLine("Please Enter Valid Command");
-                  break;
-              }
-            }
-          }
+          sit(command);
           break;
         default:
           System.Console.WriteLine("Enter Valid Command");
           break;
       }
     }
+
+    private void sit(string command)
+    {
+      if (!_gameService.getCurrentRoom())
+      {
+        System.Console.WriteLine("Invalid command");
+      }
+      else
+      {
+        System.Console.WriteLine("As you are approaching you hear footsteps coming up behind you, do you continue to the Throne?");
+        string final = Console.ReadLine();
+        switch (final)
+        {
+          case "yes":
+          case "y":
+          case "yeah":
+          case "continue":
+            _gameService.Go(command);
+            break;
+          case "no":
+          case "n":
+          case "stop":
+            System.Console.WriteLine("Guards come storming in and arrest you for getting too close to the throne.");
+            _gameService.Reset();
+            break;
+          default:
+            System.Console.WriteLine("Please Enter Valid Command");
+            break;
+        }
+        if (final == "yes" && _gameService.getCurrentRoom())
+        {
+          Print();
+          System.Console.WriteLine("Play Again?");
+          string repeat = Console.ReadLine();
+          switch (repeat)
+          {
+            case "yes":
+            case "y":
+            case "yeah":
+              Console.Clear();
+              System.Console.WriteLine("What's your name ?");
+              string player = Console.ReadLine();
+              _gameService.Setup(player);
+              _gameService.Reset();
+              Console.Clear();
+              _gameService.Help();
+              break;
+            case "no":
+            case "n":
+              Environment.Exit(0);
+              break;
+            default:
+              System.Console.WriteLine("Please Enter Valid Command");
+              break;
+          }
+        }
+      }
+    }
+
     private void Print()
     {
       foreach (string message in _gameService.Messages)

@@ -14,15 +14,7 @@ namespace ConsoleAdventure.Project
 
     public bool getCurrentRoom()
     {
-      IRoom room = _game.CurrentRoom;
-      if (room is ThroneRoom)
-      {
-        return true;
-      }
-      else
-      {
-        return false;
-      }
+      return _game.CurrentRoom is ThroneRoom;
     }
     public void Go(string direction)
     {
@@ -118,6 +110,10 @@ Type -
         Messages.Add("No Items Available");
         return;
       }
+
+      // IItem found = _game.CurrentRoom.Items.Find(i=>i.Name.ToLower() == itemName)
+
+
       for (int i = 0; i < _game.CurrentRoom.Items.Count; i++)
       {
         var item = _game.CurrentRoom.Items[i];
@@ -139,10 +135,21 @@ Type -
     ///</summary>
     public void UseItem(string itemName)
     {
+      //Found IItem
+      //if item from inventory
+      //else if not try from room list
+      //if still not cant use
+      //return
+
+      //RoomItemUse
+      //GlobalItemUse
+
+
+
       IRoom room = _game.CurrentRoom;
       if (room is TrapRoom)
       {
-        // _game.CurrentPlayer.Inventory.Find(itemName);
+        // IItem found = _game.CurrentPlayer.Inventory.Find(itemName);
         // var itemm = _game.CurrentPlayer.Inventory.IndexOf(itemName as Item);
         for (int i = 0; i < _game.CurrentPlayer.Inventory.Count; i++)
         {

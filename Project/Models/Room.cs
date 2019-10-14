@@ -21,6 +21,20 @@ namespace ConsoleAdventure.Project.Models
 
     public Dictionary<string, IRoom> Exits { get; set; }
 
+    private Dictionary<IItem, KeyValuePair<string, IRoom>> lockedExits { get; set; }
+    private Dictionary<IItem, IItem> unlockableItems { get; set; }
+    private Dictionary<IItem, string> descriptionChangers { get; set; }
+
+
+
+    // public string Use(IItem item){
+    //   //check locked exits
+    //     //if contains key then add room from locked to exits
+    //   //check unlockcables
+    //   //ch
+
+    // }
+
     public void AddRoomConnection(IRoom room, string direction)
     {
       Exits.Add(direction, room);
