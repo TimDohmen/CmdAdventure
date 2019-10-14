@@ -16,12 +16,14 @@ namespace ConsoleAdventure.Project.Controllers
       System.Console.WriteLine("What's your name ?");
       string player = Console.ReadLine();
       _gameService.Setup(player);
+      Console.Clear();
+      _gameService.Help();
+      Print();
       while (true)
       {
         GetUserInput();
         Print();
       }
-
     }
 
     //NOTE Gets the user input, calls the appropriate command, and passes on the option if needed.
@@ -36,7 +38,6 @@ namespace ConsoleAdventure.Project.Controllers
       Console.Clear();
       switch (command)
       {
-
         case "look":
         case "l":
           Console.Clear();
@@ -68,6 +69,9 @@ namespace ConsoleAdventure.Project.Controllers
         case "quit":
           _gameService.Quit();
           break;
+        case "cry":
+          System.Console.WriteLine("Don't cry buddy it'll be okay");
+          break;
 
         case "sit":
           if (!_gameService.getCurrentRoom())
@@ -82,11 +86,12 @@ namespace ConsoleAdventure.Project.Controllers
             {
               case "yes":
               case "y":
+              case "yeah":
                 _gameService.Go(command);
                 break;
               case "no":
               case "n":
-                System.Console.WriteLine("Guards come storming in and arrest you because you are not the real king.");
+                System.Console.WriteLine("Guards come storming in and arrest you for getting too close to the throne.");
                 _gameService.Reset();
                 break;
               default:
@@ -99,26 +104,19 @@ namespace ConsoleAdventure.Project.Controllers
               _gameService.Quit();
             }
           }
-
           break;
-
         default:
           System.Console.WriteLine("Enter Valid Command");
           break;
       }
-
     }
-
     private void Print()
     {
-
       foreach (string message in _gameService.Messages)
       {
         System.Console.WriteLine(message);
-
       }
       _gameService.Messages.Clear();
     }
-
   }
 }

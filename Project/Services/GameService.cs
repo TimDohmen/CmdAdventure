@@ -38,9 +38,13 @@ namespace ConsoleAdventure.Project
         }
         else
         {
-          Messages.Add("You have been knocked out by the guards");
+          Messages.Add($@"
+  The guards storm in and immediately see you are an imposter! They knock you out...
+  
+    You come to your senses back in the unknown room... once again in a pile of your own vomit");
           Reset();
         }
+        return;
       }
       _game.CurrentRoom = _game.CurrentRoom.Move(direction);
       string to = _game.CurrentRoom.Name;
@@ -56,15 +60,15 @@ namespace ConsoleAdventure.Project
     public void Help()
     {
       Messages.Add($@"
-Type look to see where you are and what option you have
+Type look to see where you are and what options you have
 
-Type go (direction) to travel
+Type go direction to travel
 
-Type take (item) to take item from a room
+Type take itemName to take item from a room
 
 Type Inventory to view items in inventory
 
-Type use (item) to use item
+Type use itemName to use item
 ");
     }
 

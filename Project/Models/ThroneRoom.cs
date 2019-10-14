@@ -50,8 +50,14 @@ You are now in {Name}
     public string TakeThrone(string name)
     {
 
-      return $@"You sit upon the throne and hear the people start chanting . . . " + name + ". . ." + name + " . . . " + name +
-      $@"
+      return $@"
+  You sit upon the throne as guards coming rushing in. You don't look like the King....
+      
+      But you are wearing the crown so nobody questions it.
+
+      The people start chanting . . . " + name + ". . ." + name + " . . . " + name +
+      $@" 
+
       You have won";
 
 
