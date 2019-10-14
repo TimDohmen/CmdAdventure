@@ -50,7 +50,11 @@ You are now in {Name}
     public string TakeThrone(string name)
     {
 
-      return "You sit upon the throne and hear the people start chanting . . . " + name + ". . ." + name + " . . . " + name;
+      return $@"You sit upon the throne and hear the people start chanting . . . " + name + ". . ." + name + " . . . " + name +
+      $@"
+      You have won";
+
+
     }
     public IRoom Move(string direction)
     {

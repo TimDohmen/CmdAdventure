@@ -35,23 +35,21 @@ namespace ConsoleAdventure.Project
         {
           ThroneRoom thisRoom = (ThroneRoom)room;
           Messages.Add(thisRoom.TakeThrone(_game.CurrentPlayer.Name));
+
         }
-        else if (room is TrapRoom)
-        {
-          if (_game.CurrentRoom.Move(direction) == _game.CurrentRoom)
-          {
-            TrapRoom thisRoom = (TrapRoom)room;
-          }
-        }
+        // else if (room is TrapRoom)
+        // {
+        //   if (_game.CurrentRoom.Move(direction) == _game.CurrentRoom)
+        //   {
+        //     TrapRoom thisRoom = (TrapRoom)room;
+        //   }
+        // }
         else
         {
           Messages.Add("You have been knocked out by the guards");
         }
       }
-
       _game.CurrentRoom = _game.CurrentRoom.Move(direction);
-
-
       string to = _game.CurrentRoom.Name;
 
       if (from == to)
@@ -60,6 +58,7 @@ namespace ConsoleAdventure.Project
         return;
       }
       Messages.Add($"Traveled to {to} from {from}");
+      Look();
     }
     public void Help()
     {

@@ -14,7 +14,7 @@ namespace ConsoleAdventure.Project.Models
       IRoom start = new Room("An Unknown Room", "You come to your senses in a pile of your own vomit.");
       IRoom two = new Room("Outside", "To your north you hear a noise but to your west you see something mysterious");
       IRoom three = new TrapRoom("Pub", "The bar is very crowded but there is an open spot off to the side");
-      IRoom four = new TrapRoom("Hidden Tunnel", "There is ancient markings on the walls and lit torchs leading down a corridor.");
+      IRoom four = new TrapRoom("Hidden Tunnel", "There is ancient markings on the walls of this poorly lit corridor.");
       IRoom five = new Room("Courtyard", "You see large arch doors to your north but a smaller normal door to your west.");
       IRoom six = new TrapRoom("Jailor", "You walk into the room to see a group of guards sitting around a table looking up at you.");
       IRoom seven = new SafeTrapRoom("Dark Hallway", $@"

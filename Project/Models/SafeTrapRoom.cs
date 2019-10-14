@@ -27,6 +27,7 @@ namespace CmdAdventure.Project.Models
         if (itemName.Name.ToString().ToLower() == "key")
         {
           Unlock();
+          Exits["west"].Unlock();
           System.Console.WriteLine("Unlocked door");
         }
       }
@@ -58,23 +59,6 @@ You are now in {Name}
  {exits.ToUpper() + ""}  
  ";
       }
-      ///Changes Jailor room based on used sword or not
-      else if (Locked == false && Name.ToString().ToLower() == "jailor")
-      {
-        string template = $@"
-Someone really left a mess in here...";
-
-        if (Items.Count != 0)
-        {
-          template += $@"
-  Through the gore you see something shiny 
- {item}";
-        }
-
-        template += $@"The only way out is
- { exits + ""}";
-        return template;
-      }
       else
       {
         return $@"    
@@ -95,7 +79,6 @@ You are now in {Name}
       {
         if (Exits[direction].Move("east") == Exits[direction] && Exits[direction].Move("south") == Exits[direction])
         {
-          System.Console.WriteLine("You try to open the door but it is locked shut...");
           return this;
         }
         else

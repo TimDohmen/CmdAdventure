@@ -85,13 +85,23 @@ Someone really left a mess in here...";
         {
           template += $@"
 Through the gore you see something shiny 
-
   {item}
 ";
         }
+        template += $@"
+  The only way out is
+ { exits.ToUpper() + ""}";
+        return template;
+      }
+      else if (Name.ToString().ToLower() == "kings room" && Items.Count == 0)
+      {
+        string template = $@"
+The king tosses and turns without his crown by his side
+";
 
-        template += $@"The only way out is
- { exits + ""}";
+        template += $@"
+    The only way out is
+ { exits.ToUpper() + ""}";
         return template;
       }
       else
@@ -123,9 +133,9 @@ You also have room(s) to your
         }
         else
         {
-          TrapRoom trap = (TrapRoom)room;
-          System.Console.WriteLine("Locked door find a way out");
-          return this;
+          // TrapRoom trap = (TrapRoom)room;
+          // System.Console.WriteLine("Locked door find a way out");
+          // return this;
         }
         return this;
       }
