@@ -146,7 +146,8 @@ Type use itemName to use item
           if (item.Name.ToLower() == itemName)
           {
             TrapRoom trap = (TrapRoom)room;
-            trap.UseItem(item);
+            // trap.UseItem(item);
+            Messages.Add(trap.UseItem(item));
             Messages.Add($"Used your {item.Name}");
             return;
           }

@@ -20,7 +20,7 @@ namespace CmdAdventure.Project.Models
 
     public bool Locked { get; set; } = true;
 
-    public void UseItem(Item itemName)
+    public string UseItem(Item itemName)
     {
       if (Unlockable.Contains(itemName))
       {
@@ -28,13 +28,14 @@ namespace CmdAdventure.Project.Models
         {
           Unlock();
           Exits["west"].Unlock();
-          System.Console.WriteLine("Unlocked door");
+          return "Unlocked door";
         }
       }
       else
       {
-        System.Console.WriteLine("You wave your" + itemName.ToString() + " around but it has no use here");
+        return "You wave your" + itemName.ToString() + " around but it has no use here";
       }
+      return "";
     }
 
     public string GetTemplate()

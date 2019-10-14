@@ -20,16 +20,16 @@ namespace CmdAdventure.Project.Models
 
     public bool Locked { get; set; } = true;
 
-    public void UseItem(Item itemName)
+    public string UseItem(Item itemName)
     {
       if (Unlockable.Contains(itemName))
       {
         Locked = false;
-        System.Console.WriteLine("You place the cold gold crown upon your head");
+        return "You place the cold gold crown upon your head";
       }
       else
       {
-        System.Console.WriteLine("Item has no use here");
+        return "Item has no use here";
       }
     }
     public string GetTemplate()

@@ -20,7 +20,7 @@ namespace CmdAdventure.Project.Models
     {
       Locked = false;
     }
-    public void UseItem(Item itemName)
+    public string UseItem(Item itemName)
     {
       if (Unlockable.Contains(itemName))
       {
@@ -28,28 +28,25 @@ namespace CmdAdventure.Project.Models
         {
           Items.Add(new Item("Chainmail", "This would provide some good protection."));
           Locked = false;
-
-          System.Console.WriteLine("You slice the guards down and manage to get away.");
+          return "You slice the guards down and manage to get away.";
         }
         else if (itemName.Name.ToString().ToLower() == "torch")
         {
           Locked = false;
 
-          System.Console.WriteLine("You wield the torch.");
+          return "You wield the torch.";
         }
         else if (itemName.Name.ToString().ToLower() == "ale")
         {
           Locked = false;
-          System.Console.WriteLine("You drink the ale.");
+          return "You drink the ale.";
         }
         Locked = false;
-
-        System.Console.WriteLine("Unlocked door");
+        return "Unlocked door";
       }
       else
       {
-
-        System.Console.WriteLine("Item has no use here");
+        return "Item has no use here";
       }
 
     }

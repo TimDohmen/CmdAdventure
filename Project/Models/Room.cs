@@ -26,9 +26,9 @@ namespace ConsoleAdventure.Project.Models
       Exits.Add(direction, room);
     }
 
-    public void UseItem(Item itemName)
+    public string UseItem(Item itemName)
     {
-
+      return $"You used {itemName} it has no effect here.";
     }
 
     public IRoom Move(string direction)
